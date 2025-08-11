@@ -7,52 +7,39 @@ import type { VideoPlayerProps } from '../types';
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden bg-transparent">
-      {/* Video Background */}
-      <div className="absolute inset-0 z-0">
-        <ReactPlayer
-          src="https://player.vimeo.com/video/851706315"
-          playing={true}
-          loop={true}
-          muted={true}
-          width="100%"
-          height="100%"
-          style={{
-            objectFit: 'cover',
-            background: 'transparent',
-          }}
-          className="!absolute !inset-0 !w-full !h-full !bg-transparent"
-        />
-      </div>
-      
-  {/* Overlay REMOVIDO para deixar o vídeo visível */}
-      
-      {/* Content */}
-      <div className="relative z-20 text-center px-4 max-w-4xl mx-auto">
-        <h1 className="text-5xl md:text-7xl font-bold mb-6 gradient-text">
-          Portfel
-        </h1>
-        <p className="text-xl md:text-2xl text-gray-300 mb-8 max-w-2xl mx-auto">
-          Muito mais do que uma Consultoria Financeira. Realize seus sonhos com planejamento personalizado.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          
-          <button className="btn-primary">
-            QUERO FALAR COM UM CONSULTOR
-          </button>
-          <button className="btn-secondary">
-            Conheça nossos serviços
-          </button>
-        </div>
-      </div>
-      
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white rounded-full flex justify-center">
-          <div className="w-1 h-3 bg-white rounded-full mt-2 animate-pulse"></div>
-        </div>
-      </div>
-    </section>
+<section className="relative w-screen h-screen overflow-hidden bg-black">
+  {/* Container que corta o excesso */}
+  <div className="absolute top-0 left-0 w-full h-full overflow-hidden">
+    {/* Wrapper para centralizar e cobrir */}
+    <div
+      className="absolute top-1/2 left-1/2"
+      style={{
+        width: '100vw',
+        height: '56.25vw', // 16:9 ratio = 9/16=0.5625 => altura proporcional à largura
+        minHeight: '100vh',
+        minWidth: '177.78vh', // largura mínima para cobrir altura em 16:9
+        transform: 'translate(-50%, -50%)',
+      }}
+    >
+      <iframe
+        src="https://player.vimeo.com/video/851706315?background=1&autoplay=1&loop=1&muted=1#t=30s"
+        className="w-full h-full"
+        style={{ pointerEvents: 'none' }}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+        title="Background video"
+      />
+    </div>
+  </div>
+
+  {/* Conteúdo da página */}
+  <div className="relative z-10 flex items-center justify-center w-full h-full text-white">
+    <h1 className="text-4xl font-bold">Meu Portfólio</h1>
+  </div>
+</section>
+
+
   );
 };
 
